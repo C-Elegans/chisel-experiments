@@ -25,6 +25,6 @@ class Global(extensions: List[HardwareExtension]) extends Module{
 
 object CreateAdder extends HardwareExtension{
   def elaborate(g:Global) {
-    g.out := g.io.a + g.io.b
+    g.out := g.io.a + g.io.a
   }
 }
