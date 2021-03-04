@@ -2,11 +2,7 @@ package hello
 
 import chisel3._
 
-trait HardwareExtension {
-  def elaborate(g:Global)
-}
-
-class Global(extensions: List[HardwareExtension]) extends Module{
+class Global(extensions: List[HardwareExtension[Global]]) extends Module{
   val io = IO(new Bundle{
     val a = Input(UInt(8.W))
     val b = Input(UInt(8.W))
@@ -23,8 +19,3 @@ class Global(extensions: List[HardwareExtension]) extends Module{
 }
 
 
-object CreateAdder extends HardwareExtension{
-  def elaborate(g:Global) {
-    g.out := g.io.a + g.io.a
-  }
-}
