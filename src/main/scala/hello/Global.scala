@@ -18,4 +18,12 @@ class Global(extensions: List[HardwareExtension[Global]]) extends Module{
   }
 }
 
+object AssembledGlobal {
+  val extensionlist = CreateAdder :: Nil;
+  def getGlobal() : Global = {
+    new Global(extensionlist)
+  }
+
+}
+
 

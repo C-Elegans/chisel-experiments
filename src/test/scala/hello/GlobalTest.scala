@@ -11,10 +11,9 @@ class GlobalTest extends FlatSpec with ChiselScalatestTester with Matchers {
   behavior of "Global"
 
   it should "Add numbers" in {
-    var extensionlist = CreateAdder :: Nil;
-    test(new Global(extensionlist)).withAnnotations(Seq(VerilatorBackendAnnotation)) {c =>
+    test(AssembledGlobal.getGlobal()).withAnnotations(Seq(VerilatorBackendAnnotation)) {c =>
       val stage = new ChiselStage
-      println(stage.emitVerilog(new Global(extensionlist)))
+      println(stage.emitVerilog(AssembledGlobal.getGlobal()))
       for(a <- 0 to 10) {
         c.io.a.poke(a.U)
         c.io.b.poke(a.U)
