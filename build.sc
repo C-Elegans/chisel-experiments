@@ -22,4 +22,8 @@ object hello extends ScalaModule {
     ivy"edu.berkeley.cs:::chisel3-plugin:3.4.2",
     ivy"org.scalamacros:::paradise:2.1.1",
   )
+
+  object test extends Tests {
+    def testFrameworks = Seq("org.scalatest.tools.Framework")
+  }
 }
